@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://7c2l4j27pmv"]
+
+[ext_resource type="Script" uid="uid://1wpbcep6syi8" path="res://scripts/components/movement_component.gd" id="1_lvxji"]
+[ext_resource type="Script" uid="uid://bglulwuc1hhuq" path="res://scripts/components/stats_component.gd" id="2_p47bc"]
+[ext_resource type="Script" uid="uid://d3l8ucivdklq6" path="res://scripts/components/health_component.gd" id="3_75vfm"]
+[ext_resource type="Script" uid="uid://dpv3hikqdueif" path="res://scripts/components/input_handler_component.gd" id="4_0owmy"]
+[ext_resource type="Script" uid="uid://bj4b5otcdgkq" path="res://scripts/components/camera_controller.gd" id="5_p47bc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
+
+[node name="Player" type="CharacterBody3D" unique_id=632662625]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1843818813]
+shape = SubResource("CapsuleShape3D_g4v7s")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1014889765]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=1831004533]
+mesh = SubResource("CapsuleMesh_g4v7s")
+
+[node name="CameraMount" type="Node3D" parent="." unique_id=595823280]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraMount" unique_id=1040393979]
+transform = Transform3D(1, 0, 0, 0, 0.93969256, 0.34202027, 0, -0.34202027, 0.93969256, 0, 0, 0)
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount/SpringArm3D" unique_id=1491336335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5396925, 4.34202)
+current = true
+
+[node name="Components" type="Node" parent="." unique_id=571137542]
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=334713978]
+script = ExtResource("1_lvxji")
+acceleration = 45.0
+
+[node name="StatsComponent" type="Node" parent="Components" unique_id=746341940]
+script = ExtResource("2_p47bc")
+
+[node name="HealthComponent" type="Node" parent="Components" unique_id=1356804450]
+script = ExtResource("3_75vfm")
+
+[node name="InputHandlerComponent" type="Node" parent="Components" unique_id=677403001]
+script = ExtResource("4_0owmy")
+
+[node name="CombatComponent" type="Node" parent="Components" unique_id=422145119]
+
+[node name="CameraController" type="Node" parent="Components" unique_id=1985370912]
+script = ExtResource("5_p47bc")
+metadata/_custom_type_script = "uid://bj4b5otcdgkq"

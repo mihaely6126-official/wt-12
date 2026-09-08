@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://dbig3kwjuqh6d"]
+
+[ext_resource type="PackedScene" uid="uid://7c2l4j27pmv" path="res://scenes/player/player.tscn" id="1_lt47i"]
+
+[sub_resource type="BoxMesh" id="box_wall_horiz"]
+size = Vector3(100, 20, 0.5)
+
+[sub_resource type="BoxShape3D" id="box_shape_wall_horiz"]
+size = Vector3(100, 20, 0.5)
+
+[sub_resource type="BoxMesh" id="box_wall_vert"]
+size = Vector3(0.5, 20, 100)
+
+[sub_resource type="BoxShape3D" id="box_shape_wall_vert"]
+size = Vector3(0.5, 20, 100)
+
+[sub_resource type="BoxMesh" id="box_partition"]
+size = Vector3(4, 1.2, 0.5)
+
+[sub_resource type="BoxShape3D" id="box_shape_partition"]
+size = Vector3(4, 1.2, 0.5)
+
+[sub_resource type="BoxMesh" id="box_crawl"]
+size = Vector3(4, 0.2, 0.5)
+
+[sub_resource type="BoxShape3D" id="box_shape_crawl"]
+size = Vector3(4, 0.2, 0.5)
+
+[sub_resource type="BoxMesh" id="box_cover"]
+size = Vector3(0.5, 2.5, 3)
+
+[sub_resource type="BoxShape3D" id="box_shape_cover"]
+size = Vector3(0.5, 2.5, 3)
+
+[sub_resource type="BoxMesh" id="box_ramp"]
+size = Vector3(60, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybdod"]
+size = Vector3(60, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ybdod"]
+size = Vector3(15, 0.2, 2)
+
+[sub_resource type="BoxShape3D" id="box_shape_ramp"]
+size = Vector3(15, 0.2, 2)
+
+[sub_resource type="BoxMesh" id="box_table"]
+size = Vector3(2, 0.1, 1)
+
+[sub_resource type="BoxShape3D" id="box_shape_table"]
+size = Vector3(2, 0.1, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ybdod"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2s55i"]
+size = Vector2(100, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57qmd"]
+
+[sub_resource type="Sky" id="Sky_yf5fn"]
+sky_material = SubResource("ProceduralSkyMaterial_57qmd")
+
+[sub_resource type="Environment" id="Environment_g4v7s"]
+background_mode = 2
+sky = SubResource("Sky_yf5fn")
+
+[node name="Test_map" type="Node3D" unique_id=984312241]
+
+[node name="Wall_N" type="StaticBody3D" parent="." unique_id=1251368201]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 50)
+
+[node name="Mesh" type="MeshInstance3D" parent="Wall_N" unique_id=687275093]
+mesh = SubResource("box_wall_horiz")
+
+[node name="Collision" type="CollisionShape3D" parent="Wall_N" unique_id=1438997105]
+shape = SubResource("box_shape_wall_horiz")
+
+[node name="Wall_S" type="StaticBody3D" parent="." unique_id=669090787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -50)
+
+[node name="Mesh" type="MeshInstance3D" parent="Wall_S" unique_id=832822078]
+mesh = SubResource("box_wall_horiz")
+
+[node name="Collision" type="CollisionShape3D" parent="Wall_S" unique_id=1118033838]
+shape = SubResource("box_shape_wall_horiz")
+
+[node name="Wall_W" type="StaticBody3D" parent="." unique_id=231442156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 10, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Wall_W" unique_id=1776672809]
+mesh = SubResource("box_wall_vert")
+
+[node name="Collision" type="CollisionShape3D" parent="Wall_W" unique_id=1125688455]
+shape = SubResource("box_shape_wall_vert")
+
+[node name="Wall_E" type="StaticBody3D" parent="." unique_id=1695269216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 10, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Wall_E" unique_id=1268358821]
+mesh = SubResource("box_wall_vert")
+
+[node name="Collision" type="CollisionShape3D" parent="Wall_E" unique_id=1375313110]
+shape = SubResource("box_shape_wall_vert")
+
+[node name="Partition_Jump" type="StaticBody3D" parent="." unique_id=697266887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2222, 0.6, 29.4051)
+
+[node name="Mesh" type="MeshInstance3D" parent="Partition_Jump" unique_id=120389518]
+mesh = SubResource("box_partition")
+
+[node name="Collision" type="CollisionShape3D" parent="Partition_Jump" unique_id=1430518557]
+shape = SubResource("box_shape_partition")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Partition_Jump" unique_id=2073255849]
+size = Vector3(4, 1.2, 0.5)
+
+[node name="Crawl_Barrier" type="StaticBody3D" parent="." unique_id=1077664854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.74, 0.8, 28.8828)
+
+[node name="Mesh" type="MeshInstance3D" parent="Crawl_Barrier" unique_id=140820798]
+mesh = SubResource("box_crawl")
+
+[node name="Collision" type="CollisionShape3D" parent="Crawl_Barrier" unique_id=690793111]
+shape = SubResource("box_shape_crawl")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Crawl_Barrier" unique_id=759800233]
+size = Vector3(4, 0.2, 0.5)
+
+[node name="Crawl_Barrier2" type="StaticBody3D" parent="." unique_id=893934181]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2761, 1.75705, 28.8828)
+
+[node name="Mesh" type="MeshInstance3D" parent="Crawl_Barrier2" unique_id=311275560]
+mesh = SubResource("box_crawl")
+
+[node name="Collision" type="CollisionShape3D" parent="Crawl_Barrier2" unique_id=835062592]
+shape = SubResource("box_shape_crawl")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Crawl_Barrier2" unique_id=1729518011]
+size = Vector3(4, 0.2, 0.5)
+
+[node name="Cover" type="StaticBody3D" parent="." unique_id=925399465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, -20)
+
+[node name="Mesh" type="MeshInstance3D" parent="Cover" unique_id=1592980110]
+mesh = SubResource("box_cover")
+
+[node name="Collision" type="CollisionShape3D" parent="Cover" unique_id=1397401105]
+shape = SubResource("box_shape_cover")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Cover" unique_id=625803110]
+size = Vector3(0.5, 2.5, 3)
+
+[node name="Ramp" type="StaticBody3D" parent="." unique_id=1380739857]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866026, 0, 0, 0, 1, -20, 15, 48)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp" unique_id=1822907550]
+mesh = SubResource("box_ramp")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp" unique_id=1258941538]
+shape = SubResource("BoxShape3D_ybdod")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp" unique_id=1591668123]
+size = Vector3(60, 0.2, 2)
+
+[node name="Ramp2" type="StaticBody3D" parent="Ramp" unique_id=911764448]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, -30.7312, -0.413258, -6.52201)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp/Ramp2" unique_id=1603631556]
+mesh = SubResource("BoxMesh_ybdod")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp/Ramp2" unique_id=343996860]
+shape = SubResource("box_shape_ramp")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp/Ramp2" unique_id=202428144]
+size = Vector3(15, 0.2, 2)
+
+[node name="Ramp3" type="StaticBody3D" parent="Ramp" unique_id=295742334]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 1.77636e-15, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, -15.0328, -0.420378, -6.57513)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp/Ramp3" unique_id=756345885]
+mesh = SubResource("BoxMesh_ybdod")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp/Ramp3" unique_id=1229285110]
+shape = SubResource("box_shape_ramp")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp/Ramp3" unique_id=46977869]
+size = Vector3(15, 0.2, 2)
+
+[node name="Ramp4" type="StaticBody3D" parent="Ramp" unique_id=445980866]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 1.77636e-15, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 0.252205, -0.832406, -6.52201)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp/Ramp4" unique_id=1755293691]
+mesh = SubResource("BoxMesh_ybdod")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp/Ramp4" unique_id=96295093]
+shape = SubResource("box_shape_ramp")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp/Ramp4" unique_id=1007449685]
+size = Vector3(15, 0.2, 2)
+
+[node name="Ramp5" type="StaticBody3D" parent="Ramp" unique_id=1329309965]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 1.77636e-15, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 11.9708, -0.680141, -6.52201)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp/Ramp5" unique_id=2013970257]
+mesh = SubResource("BoxMesh_ybdod")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp/Ramp5" unique_id=740147436]
+shape = SubResource("box_shape_ramp")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp/Ramp5" unique_id=331343641]
+size = Vector3(15, 0.2, 2)
+
+[node name="Ramp6" type="StaticBody3D" parent="Ramp" unique_id=1594280057]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866024, 1.77636e-15, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 19.1713, -0.623672, -6.52201)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ramp/Ramp6" unique_id=39496346]
+mesh = SubResource("BoxMesh_ybdod")
+
+[node name="Collision" type="CollisionShape3D" parent="Ramp/Ramp6" unique_id=785044230]
+shape = SubResource("box_shape_ramp")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Ramp/Ramp6" unique_id=309903329]
+size = Vector3(15, 0.2, 2)
+
+[node name="Table2" type="StaticBody3D" parent="." unique_id=1808495578]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0.8, -20)
+
+[node name="Mesh" type="MeshInstance3D" parent="Table2" unique_id=169612270]
+mesh = SubResource("box_table")
+
+[node name="Collision" type="CollisionShape3D" parent="Table2" unique_id=1822528170]
+shape = SubResource("box_shape_table")
+
+[node name="ParticlesCollision" type="GPUParticlesCollisionBox3D" parent="Table2" unique_id=592124061]
+size = Vector3(2, 0.1, 1)
+
+[node name="Plane" type="StaticBody3D" parent="." unique_id=1546533114]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane" unique_id=89052869]
+shape = SubResource("WorldBoundaryShape3D_ybdod")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane" unique_id=2074566224]
+mesh = SubResource("PlaneMesh_2s55i")
+skeleton = NodePath("../..")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="Plane" unique_id=565253466]
+size = Vector3(100, 0, 100)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=1324200206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74423, 1.75777, 6.57495)
+billboard = 2
+text = "БАЗА:
+ХОДИТЬ -МОЖНО"
+
+[node name="Player" parent="." unique_id=632662625 instance=ExtResource("1_lt47i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1431599190]
+environment = SubResource("Environment_g4v7s")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment" unique_id=1201207482]
+transform = Transform3D(1, 0, 0, 0, 0.720722, 0.6932242, 0, -0.6932242, 0.720722, 0, 0, 0)
+shadow_enabled = true
